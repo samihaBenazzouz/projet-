@@ -4,7 +4,8 @@ import { PlayListComponent } from './play-list/play-list/play-list.component';
 
 const routes: Routes = [
   
-    { path: 'liste', component: PlayListComponent },
+  
+    {path:'liste', loadChildren: () => import('../app/play-list/play-list.module').then(m => m.PlayListModule )},  
    
   
     { path: '', redirectTo: 'liste', pathMatch: 'full' },

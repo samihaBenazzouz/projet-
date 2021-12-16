@@ -1,0 +1,27 @@
+#titlefilm{
+color: black;
+font-weight: bold
+}
+
+#filminput{
+    font-size: 12px; margin-left: 15px;
+
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  #logo{
+      height:70px ;
+  }
+  .drak{
+      background-color: black;
+  }
+ .example-icon{
+     margin: 10px;
+ }
+ 
+ 
+ .alert.alert-warning{
+    margin:20px
+ }
+ 

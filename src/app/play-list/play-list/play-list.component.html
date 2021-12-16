@@ -1,6 +1,141 @@
-<p>play-list works!!!!</p>
-<mat-list >
-    <mat-list-item >Item 1</mat-list-item>
-    <mat-list-item>Item 2</mat-list-item>
-    <mat-list-item>Item 3</mat-list-item>
-  </mat-list>
+<div>
+  <!-- navbar -->
+  <mat-toolbar class="drak">
+    <mat-toolbar-row>
+      <span><img src="../assets/img/logo.jpg" alt="log" id="logo"></span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" (click)="Rechercher()" title="search" >
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" (click)="show()" title="open" >
+        <mat-icon>menu</mat-icon>
+      </button>
+     
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+<br>
+<!-- filter zone -->
+  <div class="card-body" *ngIf="filter" >
+    <div class="container-fluid">
+      <div class="row" >
+       
+  <div class="input-group mb-3">
+     
+     
+      <div  id="filminput" >
+          <mat-form-field  appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select   [(ngModel)]="typ" > 
+              <mat-option [value]="''">Tous</mat-option>
+            <mat-option *ngFor="let item of types" [value]="item.designation">
+            {{item.designation}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+     
+      <div  id="filminput" >
+        <mat-form-field  appearance="outline">
+          <mat-label>Year</mat-label>
+          <mat-select   [(ngModel)]="year" > 
+            <mat-option [value]="''">Tous</mat-option>
+          <mat-option *ngFor="let item of years" [value]="item.designation">
+          {{item.designation}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+          
+    <div  id="filminput" >
+      <mat-form-field  appearance="outline">
+        <mat-label>Title</mat-label>
+        <input type="text" [(ngModel)]="title"
+        matInput  [formControl]="myControl"[matAutocomplete]="auto">
+ <mat-autocomplete #auto="matAutocomplete">
+ </mat-autocomplete>
+    </mat-form-field>
+  </div>  
+
+    
+    
+    
+        
+      
+      </div>
+   
+  </div>
+
+</div>
+  </div>
+
+<div class="row p-3">
+  <div class="col-7">
+    <!-- result search -->
+  <fieldset class="form-group border p-3" >
+    <legend >Search results</legend>
+    <div *ngIf="listeFilms.length==0">
+      <div class="alert alert-warning" role="alert">
+       The is no movie 
+      </div>
+    </div>
+    <div *ngIf="listeFilms.length!=0">
+  <!-- <div class="form-inline" >
+  <div  *ngFor="let liste of listeFilms; let i=index">
+      <div id="cardlistetabli" class="card" >
+         
+          <img id="imgfilm" src="{{liste.Poster}}" alt="user-img" class="user-img rounded-circle">
+          <div class="card-body">
+            <h3  id="titlefilm"  class="card-title">{{liste.Type}} {{liste.Title}} </h3>
+           <h5 >{{liste.Year}}</h5>
+
+            <button mat-icon-button class="example-icon" (click)="Add()" title="add" >
+        <mat-icon>square</mat-icon>
+      </button>
+          
+           
+          </div>
+       
+       
+        </div>
+       
+      </div>
+    </div> -->
+    </div>
+  </fieldset>
+  </div>
+  <div class="col-5">
+    <!-- watch list -->
+    <fieldset class="form-group border p-3">
+      <legend>My watchlist</legend>
+      <div *ngIf="listeFavorie.length==0">
+        <div class="alert alert-warning" role="alert">
+         The is no movie watched
+        </div>
+      </div>
+      <div *ngIf="listeFavorie.length!=0">
+    <!-- <div class="form-inline" >
+    <div  *ngFor="let liste of listeFavorie; let i=index">
+        <div id="cardlistetabli" class="card" >
+           
+            <img id="imgfilm" src="{{liste.Poster}}" alt="user-img" class="user-img rounded-circle">
+            <div class="card-body">
+              <h3  id="titlefilm"  class="card-title">{{liste.Type}} {{liste.Title}} </h3>
+             <h5 >{{liste.Year}}</h5>
+                <button mat-icon-button class="example-icon" (click)="remove()" title="delete" >
+        <mat-icon>times</mat-icon>
+      </button>
+             
+            </div>
+         
+         
+          </div>
+         
+        </div>
+      </div> -->
+      </div>
+    </fieldset>
+    </div>
+</div>
+
+
+  
+  
