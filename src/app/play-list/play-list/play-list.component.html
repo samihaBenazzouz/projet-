@@ -1,16 +1,12 @@
-<div>
+<div *ngIf="isConnectionAvailableM">
   <!-- navbar -->
   <mat-toolbar class="drak">
     <mat-toolbar-row>
       <span><img src="../assets/img/logo.jpg" alt="log" id="logo"></span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" (click)="Rechercher()" title="search" >
-        <mat-icon>search</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" (click)="show()" title="open" >
-        <mat-icon>menu</mat-icon>
-      </button>
-     
+      
+        <mat-icon  (click)="Rechercher()" title="search" aria-hidden="false">search</mat-icon>
+        <mat-icon  (click)="show()" aria-hidden="false"  title="open" >menu</mat-icon>
     </mat-toolbar-row>
   </mat-toolbar>
   
@@ -20,7 +16,7 @@
     <div class="container-fluid">
       <div class="row" >
        
-  <div class="input-group mb-3">
+  <div class="input-group mb-3" [hidden]="loading">
      
      
       <div  id="filminput" >
@@ -67,29 +63,36 @@
 </div>
   </div>
 
-<div class="row p-3">
+<div class="row p-3" [hidden]="loading">
   <div class="col-7">
     <!-- result search -->
   <fieldset class="form-group border p-3" >
     <legend >Search results</legend>
-    <div *ngIf="listeFilms.length==0">
+    <div *ngIf="listeFilms.Error=='Movie not found!'">
       <div class="alert alert-warning" role="alert">
        The is no movie 
       </div>
     </div>
-    <div *ngIf="listeFilms.length!=0">
-  <!-- <div class="form-inline" >
-  <div  *ngFor="let liste of listeFilms; let i=index">
-      <div id="cardlistetabli" class="card" >
+    <div *ngIf=" listeFilms.Error!='Movie not found!'" >
+  <div class="form-inline" >
+  <div >
+      <div id="cardfilm" class="card" >
          
-          <img id="imgfilm" src="{{liste.Poster}}" alt="user-img" class="user-img rounded-circle">
+          <img *ngIf="listeFilms.Poster!='N/A'" id="imgfilm" src="{{listeFilms.Poster}}" alt="movie-img" class="user-img rounded-circle">
           <div class="card-body">
-            <h3  id="titlefilm"  class="card-title">{{liste.Type}} {{liste.Title}} </h3>
-           <h5 >{{liste.Year}}</h5>
+            <h3  id="titlefilm"  class="card-title">{{listeFilms.Type}} {{listeFilms.Title}} </h3>
+           <h4 >{{listeFilms.Year}} - {{listeFilms.Type}}</h4>
 
-            <button mat-icon-button class="example-icon" (click)="Add()" title="add" >
-        <mat-icon>square</mat-icon>
-      </button>
+           <div id="btn">
+             <div  class="btn btn-warning">
+              <mat-icon id="btnMedia" aria-hidden="false" (click)="OpenMedia()" title="open media">crop</mat-icon><span>IMDb</span> 
+             </div>
+             <div  class="btn btn-success">
+              <mat-icon id="btnAdd" aria-hidden="false" (click)="Add()" title="add">add</mat-icon><span >ADD</span> 
+             </div>
+           </div>
+        
+      
           
            
           </div>
@@ -98,7 +101,7 @@
         </div>
        
       </div>
-    </div> -->
+    </div>
     </div>
   </fieldset>
   </div>
@@ -135,6 +138,24 @@
     </fieldset>
     </div>
 </div>
+</div>
+
+<div *ngIf="!isConnectionAvailableM" >
+  <img id="wifi" src="../assets/nowifi.png" alt="logo" class="col-3"/>
+  <p id="verifconx">Connection problem</p>
+</div>
+
+<div *ngIf="loading && isConnectionAvailableM" >
+           
+  
+  <div class="spinner-img">
+  
+  </div>
+ 
+ 
+</div>
+
+
 
 
   

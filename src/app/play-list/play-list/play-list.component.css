@@ -24,4 +24,62 @@ font-weight: bold
  .alert.alert-warning{
     margin:20px
  }
- 
+ /*spiner*/
+ .spinner-img {
+    border: 10px solid rgb(236, 22, 22);
+    border-radius: 50%;
+    border-top: 10px solid rgb(2, 2, 2);
+    background-color: transparent !important;
+    height: 70px;
+    width: 70px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    
+    margin-top: 150px !important;
+    margin: auto; 
+  }
+
+  #imgfilm{
+      height: 90px;
+      width: 90px;
+      margin: 10px;
+  }
+  
+  #cardfilm{
+      width: 250px;
+  }
+  .mat-icon{
+      color: #f01c31;
+      margin: 10px;
+  }
+ #btnAdd.mat-icon{
+      color: white !important;
+      margin: 0;
+  }
+  #btnMedia.mat-icon{
+    color: black !important;
+    margin: 0;
+}
+.btn-warning{
+    margin-left: 5px;
+}
+span{
+    position: relative;
+    bottom:5px;
+    
+}
+.btn-warning{
+    position: relative;
+    right:5px;
+}
+#wifi {
+   
+    width: 100px;
+    height: 100px;
+  }
+  #verifconx {
+    
+    color: #000000;
+    font-weight: bold;
+  }
+

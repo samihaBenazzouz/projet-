@@ -13,13 +13,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieService } from '../services/movies.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddMovieComponent } from './play-list/add-movie/add-movie.component';
 
 
 @NgModule({
   declarations: [
     PlayListComponent,
+    AddMovieComponent,
 
   ],
+  entryComponents:[AddMovieComponent],
   imports: [
     CommonModule,
     MatSliderModule,
@@ -36,6 +40,7 @@ import { MovieService } from '../services/movies.service';
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,
+    MatDialogModule
    
 
     
