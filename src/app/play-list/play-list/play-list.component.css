@@ -39,6 +39,15 @@ font-weight: bold
     margin: auto; 
   }
 
+  #titreload {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+  
+
   #imgfilm{
       height: 90px;
       width: 90px;
@@ -76,10 +85,14 @@ span{
    
     width: 100px;
     height: 100px;
+    display: block;
+    margin: auto;
+    margin-top: 150px;
   }
   #verifconx {
     
     color: #000000;
     font-weight: bold;
+    text-align: center;
   }
 

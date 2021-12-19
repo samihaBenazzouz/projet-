@@ -8,11 +8,13 @@ import { Injectable } from '@angular/core';
 export class MovieService {
 
   constructor(private http:HttpClient) { }
+
+  /*service url prefix*/
  baseUrl="https://omdbapi.com/"
   
-listemovies(title:string,year:string){
-  // return this.http.get('https://omdbapi.com/?t='+title+'&y='+year+'&apikey=6195ff7e');
-  return this.http.get('http://www.omdbapi.com/?i=tt3896198&apikey=4497e0e7&t='+title+'&y='+year)
+serachFilm(title:string,year:string,type:string){
+  
+  return this.http.get(this.baseUrl+'/?apikey=4497e0e7&t='+title+'&y='+year+'&type='+type)
 }
 ListeFavorie(){
     return this.http.get('');
