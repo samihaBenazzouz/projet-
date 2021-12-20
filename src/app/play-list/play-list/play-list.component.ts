@@ -5,6 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MovieService } from 'src/app/services/movies.service';
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import { RemoveMovieComponent } from './remove-movie/remove-movie.component';
 
 @Component({
   selector: 'app-play-list',
@@ -68,12 +69,12 @@ export class PlayListComponent implements OnInit {
     // this.movie.ListeFavorie().subscribe((res)=>{
     //   this.listeWatch=res 
     //  })
-   
-if (localStorage.getItem('monObjet') ){
-  this.listeWatch=[JSON.parse(localStorage.getItem('monObjet') || '{}')]
-}
+  //  
+  if (localStorage.getItem('monObjet') ){
+    this.listeWatch = JSON.parse(localStorage.getItem('monObjet') || '{}');
+  }
 
-
+// this.listeWatch=[JSON.parse(localStorage.getItem('monObjet') || '{}')]
 
 // this.listeWatch=JSON.parse(localStorage.getItem("monObjet") || '{}'); 
      console.log('liste',this.listeWatch);
@@ -112,6 +113,27 @@ if (localStorage.getItem('monObjet') ){
     dialogConfig.data=liste;
     
   const diag=  this.dialog.open(AddMovieComponent,dialogConfig);
+  
+    diag.afterClosed().subscribe(item => {
+   
+       if(item==1){
+       
+        // window.location.reload()
+      }
+  
+    
+    })
+  }
+  remove(liste:any){
+    
+    
+    const dialogConfig= new MatDialogConfig;
+    dialogConfig.disableClose=true;
+    dialogConfig.autoFocus=true;
+    dialogConfig.width="450px";
+    dialogConfig.data=liste;
+    
+  const diag=  this.dialog.open(RemoveMovieComponent,dialogConfig);
   
     diag.afterClosed().subscribe(item => {
    

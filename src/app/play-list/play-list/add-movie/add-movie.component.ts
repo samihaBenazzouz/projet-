@@ -27,14 +27,16 @@ export class AddMovieComponent implements OnInit {
     this.dialogRef.close()
   }
   onSubmit(){
-    // this.watchList.push(this.data)
-
     if (localStorage.getItem('monObjet')){
-      this.newWatchlist.push((localStorage.getItem('monObjet')))
+      console.log('yes');
+
+      this.newWatchlist = JSON.parse(localStorage.getItem('monObjet')  ?? '{}');
+    }else{
+      this.newWatchlist = []
     }
-  
-    this.newWatchlist.push({...this.data})
-    localStorage.setItem('monObjet',JSON.stringify({...this.newWatchlist}));
+
+    this.newWatchlist.push(this.data);
+    localStorage.setItem('monObjet', JSON.stringify(this.newWatchlist));
 
 
 

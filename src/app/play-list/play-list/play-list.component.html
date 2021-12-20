@@ -109,12 +109,12 @@
     <!-- watch list -->
     <fieldset class="form-group border p-3">
       <legend>My watchlist</legend>
-      <div *ngIf="listeWatch== null ">
+      <div *ngIf="listeWatch.length== 0 ">
         <div class="alert alert-warning" role="alert">
          The is no movie watched
         </div>
       </div>
-      <div *ngIf="listeWatch!=null">
+      <div *ngIf="listeWatch.length!=0">
         <div class="form-inline" >
           <div *ngFor="let liste of listeWatch;; let i=index">
               <div id="cardfilm" class="card" >
@@ -128,7 +128,7 @@
                      <div  class="btn btn-warning" (click)="openMedia()">
                       <mat-icon id="btnMedia" aria-hidden="false"  >crop</mat-icon><span>IMDb</span> 
                      </div>
-                     <div  class="btn btn-danger" (click)="add(listeWatch)" >
+                     <div  class="btn btn-danger" (click)="remove(liste)" >
                       <mat-icon id="btnAdd" aria-hidden="false" >add</mat-icon><span >REMOVE</span> 
                      </div>
                    </div>

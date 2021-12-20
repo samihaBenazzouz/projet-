@@ -15,12 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovieService } from '../services/movies.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddMovieComponent } from './play-list/add-movie/add-movie.component';
+import { RemoveMovieComponent } from './play-list/remove-movie/remove-movie.component';
 
 
 @NgModule({
   declarations: [
     PlayListComponent,
     AddMovieComponent,
+    RemoveMovieComponent,
 
   ],
   entryComponents:[AddMovieComponent],
