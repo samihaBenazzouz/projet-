@@ -2,7 +2,7 @@
   <!-- navbar -->
   <mat-toolbar class="drak">
     <mat-toolbar-row>
-      <!-- <span><img src="../assets/img/logo.jpg" alt="log" id="logo"></span> -->
+      <span><img src="../assets/img/logo.jpg" alt="log" id="logo"></span>
       <span class="example-spacer"></span>
       <div class="btn">
         <mat-icon  (click)="rechercher()" title="search" aria-hidden="false">search</mat-icon>
@@ -84,11 +84,17 @@
            <h4 >{{listeFilms.Year}} - {{listeFilms.Type}}</h4>
 
            <div id="btn">
-             <div  class="btn btn-warning" (click)="openMedia()">
+             <div  class="btn btn-warning">
+              <a href="https://www.imdb.com/" target="_blank">
               <mat-icon id="btnMedia" aria-hidden="false"  >crop</mat-icon><span>IMDb</span> 
+              </a>
              </div>
-             <div  class="btn btn-success" (click)="add(listeFilms)" >
+             <div  class="btn btn-success" (click)="add(listeFilms)"  *ngIf="details">
               <mat-icon id="btnAdd" aria-hidden="false" >add</mat-icon><span >ADD</span> 
+             </div>
+             <div  class="btn btn-info" (click)="view(listeFilms)"  *ngIf="!details">
+              <mat-icon id="btnAdd" aria-hidden="false" >info</mat-icon>
+              <span >LISTED</span> 
              </div>
            </div>
         
@@ -116,7 +122,7 @@
       </div>
       <div *ngIf="listeWatch.length!=0">
         <div class="form-inline" >
-          <div *ngFor="let liste of listeWatch;; let i=index">
+          <div *ngFor="let liste of listeWatch; let i=index">
               <div id="cardfilm" class="card" >
                  
                   <img *ngIf="liste.Poster!='N/A'" id="imgfilm" src="{{liste.Poster}}" alt="movie-img" class="user-img rounded-circle">
@@ -125,11 +131,13 @@
                    <h4 >{{liste.Year}} - {{liste.Type}}</h4>
         
                    <div id="btn">
-                     <div  class="btn btn-warning" (click)="openMedia()">
+                     <div  class="btn btn-warning" >
+                      <a href="https://www.imdb.com/" target="_blank">
                       <mat-icon id="btnMedia" aria-hidden="false"  >crop</mat-icon><span>IMDb</span> 
+                      </a>
                      </div>
                      <div  class="btn btn-danger" (click)="remove(liste)" >
-                      <mat-icon id="btnAdd" aria-hidden="false" >add</mat-icon><span >REMOVE</span> 
+                      <mat-icon id="btnAdd" aria-hidden="false" >close</mat-icon><span >REMOVE</span> 
                      </div>
                    </div>
                 
@@ -143,32 +151,7 @@
                
               </div>
             
-              <!-- <div>
-                <div id="cardfilm" class="card" >
-                   
-                    <img *ngIf="listeWatch.Poster!='N/A'" id="imgfilm" src="{{listeWatch.Poster}}" alt="movie-img" class="user-img rounded-circle">
-                    <div class="card-body">
-                      <h3  id="titlefilm"  class="card-title">{{listeWatch.Type}} {{listeWatch.Title}} </h3>
-                     <h4 >{{listeWatch.Year}} - {{listeWatch.Type}}</h4>
           
-                     <div id="btn">
-                       <div  class="btn btn-warning" (click)="openMedia()">
-                        <mat-icon id="btnMedia" aria-hidden="false"  >crop</mat-icon><span>IMDb</span> 
-                       </div>
-                       <div  class="btn btn-danger" (click)="add(listeWatch)" >
-                        <mat-icon id="btnAdd" aria-hidden="false" >add</mat-icon><span >REMOVE</span> 
-                       </div>
-                     </div>
-                  
-                
-                    
-                     
-                    </div>
-                 
-                 
-                  </div>
-                 
-                </div> -->
             
             </div>
       </div>

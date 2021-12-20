@@ -7,12 +7,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
   styleUrls: ['./remove-movie.component.css']
 })
 export class RemoveMovieComponent implements OnInit {
-  watchList:any=[]
-  newWatchlist:any=[]
   isConnectionAvailable: boolean = navigator.onLine;
   listeWatch: any[]= [];
-  resultat:any;
-   monTableau: Array<string> =["Voici", "mon", "beau", "tableau"]
+  
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,
   private dialog:MatDialog,private dialogRef: MatDialogRef<RemoveMovieComponent>) {
     window.addEventListener('offline', () => {
@@ -22,30 +19,27 @@ export class RemoveMovieComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.data);
     
+   
   }
+  /*close dialog box*/
   fermer(){
     this.dialogRef.close()
   }
+  /* Remove media to the listeWatch*/
   onSubmit(){
     if (localStorage.getItem('monObjet') ){
       this.listeWatch = JSON.parse(localStorage.getItem('monObjet') || '{}');
     }
-    console.log(this.listeWatch);
-    const index = this.listeWatch.indexOf(this.data)
-    console.log(index);
-    // this.resultat = this.listeWatch.find( ({ imdbID }) => imdbID === this.data.imdbID);
+    
+    const index = this.listeWatch.findIndex(x => x.imdbID == this.data?.imdbID);
+   
+    
     if (index !== -1) {
-      alert('ff')
+
       this.listeWatch.splice(index,1);
-     
+      localStorage.setItem('monObjet', JSON.stringify(this.listeWatch));
   }   
-
- 
-
-
-console.log(this.listeWatch);
 
     this.dialogRef.close("1")
    

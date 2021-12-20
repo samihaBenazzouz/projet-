@@ -16,6 +16,7 @@ import { MovieService } from '../services/movies.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddMovieComponent } from './play-list/add-movie/add-movie.component';
 import { RemoveMovieComponent } from './play-list/remove-movie/remove-movie.component';
+import { ViewMediaComponent } from './play-list/view-media/view-media.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { RemoveMovieComponent } from './play-list/remove-movie/remove-movie.comp
     PlayListComponent,
     AddMovieComponent,
     RemoveMovieComponent,
+    ViewMediaComponent,
 
   ],
   entryComponents:[AddMovieComponent],
