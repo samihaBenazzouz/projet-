@@ -11,6 +11,8 @@ export class RemoveMovieComponent implements OnInit {
   newWatchlist:any=[]
   isConnectionAvailable: boolean = navigator.onLine;
   listeWatch: any[]= [];
+  resultat:any;
+   monTableau: Array<string> =["Voici", "mon", "beau", "tableau"]
   constructor(@Inject(MAT_DIALOG_DATA) public data:any,
   private dialog:MatDialog,private dialogRef: MatDialogRef<RemoveMovieComponent>) {
     window.addEventListener('offline', () => {
@@ -30,9 +32,20 @@ export class RemoveMovieComponent implements OnInit {
     if (localStorage.getItem('monObjet') ){
       this.listeWatch = JSON.parse(localStorage.getItem('monObjet') || '{}');
     }
-    const index = this.listeWatch.indexOf(this.data?.imdbID)
+    console.log(this.listeWatch);
+    const index = this.listeWatch.indexOf(this.data)
     console.log(index);
-    
+    // this.resultat = this.listeWatch.find( ({ imdbID }) => imdbID === this.data.imdbID);
+    if (index !== -1) {
+      alert('ff')
+      this.listeWatch.splice(index,1);
+     
+  }   
+
+ 
+
+
+console.log(this.listeWatch);
 
     this.dialogRef.close("1")
    
