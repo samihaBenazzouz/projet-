@@ -30,9 +30,11 @@ export class PlayListComponent implements OnInit {
 /*list of films retrieved via the web service */
   listeFilms:any=[]
   listeWatch:any=[]
+
    /* test the connection */
   isConnectionAvailable: boolean = navigator.onLine; 
   mySubscription:any;
+
   constructor(private movie :MovieService,private router: Router, private dialog:MatDialog) {
      /*check the connection if the 
      connection is good the page will be displayed otherwise a message "check your connection" will be displayed*/
@@ -63,11 +65,26 @@ export class PlayListComponent implements OnInit {
      this.loading=false
     })
    /*favorite list*/
-    this.movie.ListeFavorie().subscribe((res)=>{
-      this.listeWatch=res 
-     })
+    // this.movie.ListeFavorie().subscribe((res)=>{
+    //   this.listeWatch=res 
+    //  })
+   
+if (localStorage.getItem('monObjet') ){
+  this.listeWatch=[JSON.parse(localStorage.getItem('monObjet') || '{}')]
+}
 
-     console.log('liste222',this.listeWatch);
+
+
+// this.listeWatch=JSON.parse(localStorage.getItem("monObjet") || '{}'); 
+     console.log('liste',this.listeWatch);
+    //  const data =
+     
+     
+
+
+
+  
+   
   }
 
 
@@ -91,7 +108,7 @@ export class PlayListComponent implements OnInit {
     const dialogConfig= new MatDialogConfig;
     dialogConfig.disableClose=true;
     dialogConfig.autoFocus=true;
-    dialogConfig.width="650px";
+    dialogConfig.width="450px";
     dialogConfig.data=liste;
     
   const diag=  this.dialog.open(AddMovieComponent,dialogConfig);
@@ -99,13 +116,14 @@ export class PlayListComponent implements OnInit {
     diag.afterClosed().subscribe(item => {
    
        if(item==1){
-        // const instance = diag.componentInstance;
-        // instance.onSubmit(this.listeWatch)
-         this.ngOnInit();
+       
+        // window.location.reload()
       }
-    console.log('liste222',this.listeWatch);
+  
     
     })
   }
   openMedia(){}
+ 
+  
 }
