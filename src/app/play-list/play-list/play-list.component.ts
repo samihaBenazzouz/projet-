@@ -37,6 +37,7 @@ export class PlayListComponent implements OnInit {
    /* test the connection */
   isConnectionAvailable: boolean = navigator.onLine; 
   mySubscription:any;
+   /* test the visualization of button add or listed */
 details:boolean=true
   constructor(private movie :MovieService,private router: Router, private dialog:MatDialog) {
      /*check the connection if the 
